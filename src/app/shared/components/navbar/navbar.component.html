@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/">Realmspinner</a>
+  <span class="spacer"></span>
+
+  @if (authService.currentUserSignal() == null) {
+    <div>
+      <button mat-button routerLink="/sign-in">Sign in</button>
+      <button mat-button routerLink="/sign-up">Sign up</button>
+    </div>
+  }
+
+  @if (authService.currentUserSignal()) {
+    <button mat-button [matMenuTriggerFor]="tools">Tools</button>
+    <mat-menu #tools="matMenu">
+      <button routerLink="/tools" mat-menu-item>Backstory generator</button>
+    </mat-menu>
+    <div>
+      <button mat-button (click)="signOut()">Sign out</button>
+    </div>
+  }
+</mat-toolbar>

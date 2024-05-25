@@ -1,14 +1,2 @@
-<p>{{ authService.currentUserSignal() | json }}</p>
-@if(authService.currentUserSignal() == null) {
-<div>
-  <a routerLink="/sign-in">Sign in</a>
-  <a routerLink="/sign-up">Sign up</a>
-</div>
-} @if(authService.currentUserSignal()) {
-<div>
-  <span routerLink="/tools">Tools</span>
-  <span (click)="signOut()">Sign out</span>
-</div>
-}
-
+<app-navbar />
 <router-outlet></router-outlet>

@@ -1,1 +1,61 @@
-<button (click)="generateStory()">Write my story</button>
+<div class="split-container">
+  <div class="form-container">
+    <div>
+      <h1>Let's weave an epic tale</h1>
+      <!-- <div class="content-container"> -->
+      <form
+        class="character-form flex-column flex-center"
+        [formGroup]="characterForm"
+        (ngSubmit)="generateStory()"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Race</mat-label>
+          <mat-select formControlName="characterRace">
+            @for (group of raceGroups; track group) {
+              <mat-optgroup [label]="group.name">
+                @for (race of group.races; track race) {
+                  <mat-option [value]="race.value">{{
+                    race.viewValue
+                  }}</mat-option>
+                }
+              </mat-optgroup>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Class</mat-label>
+          <mat-select formControlName="characterClass">
+            @for (class of classes; track class) {
+              <mat-option [value]="class.value">{{
+                class.viewValue
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Character name</mat-label>
+          <input matInput type="text" formControlName="characterName" />
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit">
+          Write my story
+        </button>
+      </form>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <div class="story-container">
+    @if (backStory.length) {
+      <!-- <div class="story-container"> -->
+      <h2>{{ characterForm.get("characterName")!.value }}</h2>
+      @for (paragraph of backStory; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+      <!-- </div> -->
+    }
+  </div>
+  <!-- </div> -->
+  <!-- </div> -->
+</div>

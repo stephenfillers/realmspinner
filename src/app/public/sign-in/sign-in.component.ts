@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css',
+  styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
   fb = inject(FormBuilder);

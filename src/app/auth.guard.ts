@@ -8,6 +8,7 @@ export const authGuard = () => {
 
   authService.user$.subscribe((user) => {
     if (user) {
+      console.log('The user', user);
       return true;
     } else {
       router.navigateByUrl('/');

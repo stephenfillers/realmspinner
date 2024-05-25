@@ -2,13 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from './auth.service';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLink, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   authService = inject(AuthService);
@@ -25,9 +26,5 @@ export class AppComponent implements OnInit {
 
       console.log(this.authService.currentUserSignal());
     });
-  }
-
-  signOut(): void {
-    this.authService.signOut();
   }
 }
